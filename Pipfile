@@ -15,6 +15,7 @@ numpy = "*"
 scipy = "*"
 matplotlib = "*"
 pandas = "*"
+kaggle = "*"
 
 [requires]
 python_version = "3.7"
