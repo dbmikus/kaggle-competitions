@@ -6,6 +6,8 @@ from sklearn.metrics import mean_absolute_error
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder
 
+from . import clean_data
+
 def build_pipeline():
     # Bundle preprocessing and modeling code in a pipeline
     my_pipeline = Pipeline(steps=[('preprocessor', build_preprocessor()),
@@ -42,16 +44,8 @@ def define_model():
     return LogisticRegression()
 
 def build_preprocessor():
-    numerical_cols = [
-        'PassengerId', 'Pclass', 'Age', 'SibSp', 'Parch', 'Fare'
-    ]
-
-    categorical_cols = [
-        'Sex',
-        'Embarked',
-        # TODO should this be converted to an ordered numerical value?
-        'cabin_char',
-    ]
+    numerical_cols = clean_data.numerical_features()
+    categorical_cols = clean_data.categorical_features()
 
     # Preprocessing for numerical data
     numerical_transformer = SimpleImputer(strategy='constant')

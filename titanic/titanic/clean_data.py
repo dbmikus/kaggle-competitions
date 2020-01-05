@@ -48,6 +48,19 @@ def clean_df(df):
         ]
     )
 
+def categorical_features():
+    return [
+        'Sex',
+        'Embarked',
+        # TODO should this be converted to an ordered numerical value?
+        'cabin_char',
+    ]
+
+def numerical_features():
+    return [
+        'PassengerId', 'Pclass', 'Age', 'SibSp', 'Parch', 'Fare'
+    ]
+
 def _split_train_x_y_df(cleaned_train_df, valid_size=0.33):
     y_col_name = 'Survived'
     X = cleaned_train_df.drop(columns=[y_col_name])
