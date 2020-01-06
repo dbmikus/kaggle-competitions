@@ -34,10 +34,6 @@ def clean_df(df):
         columns=[
             "Ticket",
             "Name",
-            # TODO add these back in later
-            # Look at `set(clean_df['ticket_prefix'])` to see ticket prefixes
-            # that might be similar
-            "ticket_prefix",
         ]
     )
 
@@ -48,6 +44,7 @@ def categorical_features():
         "Embarked",
         # TODO should this be converted to an ordered numerical value?
         "cabin_char",
+        'ticket_prefix',
     ]
 
 
